@@ -18,9 +18,9 @@ export default {
             enteredValue: '',
             isValueValid: false,
             isInputTouched: false,
-            toDoList: []
         };
     },
+    props: ['todo'],
     computed: {
         valueHasError() {
             return !this.isValueValid && this.isInputTouched ? true : false;
@@ -36,7 +36,7 @@ export default {
             }
             this.isValueValid = true;
             console.log(this.valueHasError)
-            this.toDoList.push(this.enteredValue);
+            this.todo.push(this.enteredValue);
             this.enteredValue = '';
         },
         entering() {
