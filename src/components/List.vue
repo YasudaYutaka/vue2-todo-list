@@ -4,7 +4,7 @@
         <ul class="my-5">
             <transition-group name="slide" type="transition">
                 <v-card class="my-5 pa-5 d-flex flex-row justify-space-between" v-for="(todo, index) in todos" :key="index">
-                    <li>{{todo}}  {{index}}</li>
+                    <li>{{todo}}</li>
                     <v-btn class="deep-purple darken-4" dark small @click="deleteTodo(index)">Remove</v-btn>
                 </v-card>
             </transition-group>
