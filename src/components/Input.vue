@@ -31,11 +31,9 @@ export default {
             this.isInputTouched = true;
             if(this.enteredValue.trim() === '') {
                 this.isValueValid = false
-                console.log(this.valueHasError)
                 return;
             }
             this.isValueValid = true;
-            console.log(this.valueHasError)
             this.todo.push(this.enteredValue);
             this.enteredValue = '';
         },
