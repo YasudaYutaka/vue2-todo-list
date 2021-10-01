@@ -39,7 +39,7 @@ export default {
         return;
       }
       todo = JSON.parse(todo);
-      let todo2 = todo // antes quando estava usando direto no todo, n funcionava, tive que adicionar essa variavel apontando para ele
+      let todo2 = todo
       todo2 = todo2.splice(index, 1);
         console.log(todo2)
 
