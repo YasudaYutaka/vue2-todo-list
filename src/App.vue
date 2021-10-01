@@ -3,8 +3,8 @@
     <h2 class="text-center mt-10">Todo<span class="font-weight-thin">List</span></h2>
     <v-main>
       <transition-group name="slide" type="animation" appear>
-        <Input key='input' :todo="todos"/>
-        <List key='list' :todos="todos" :deleteTodo="deleteTodo"/>
+        <Input key='input' :todo="todos" :addTodo="addTodo"/>
+        <List key='list' :todos="todosLocal" :deleteTodo="deleteTodo" />
       </transition-group>
     </v-main>
   </v-app>
@@ -24,11 +24,40 @@ export default {
 
   data: () => ({
     todos: [],
+    todosLocal: [],
   }),
+
+  created() {
+    this.todosLocal = JSON.parse(localStorage.getItem('todoList'));
+  },
 
   methods: {
     deleteTodo(index) {
-      this.todos.splice(index, 1)
+      //this.todos.splice(index, 1)
+      let todo = localStorage.getItem('todoList');
+      if(!todo) {
+        return;
+      }
+      todo = JSON.parse(todo);
+      let todo2 = todo
+      todo2 = todo2.splice(index, 1);
+        console.log(todo2)
+
+      this.todosLocal = todo;
+
+      localStorage.setItem('todoList', JSON.stringify(todo))
+    },
+    addTodo(value) {
+      let todo = localStorage.getItem('todoList');
+      if(todo) {
+        todo = JSON.parse(todo);
+        todo.push(value);
+      } else {
+        todo = [value];
+      }
+      this.todosLocal = todo; // atualizar lista ao add
+            console.log(todo)
+      localStorage.setItem('todoList', JSON.stringify(todo))
     }
   }
 };
